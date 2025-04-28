@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Doughnut, Line } from "react-chartjs-2";
+import { Bar, Doughnut, Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   ArcElement,
@@ -10,12 +10,15 @@ import {
   Tooltip,
   Legend,
   Title,
+  BarElement,
 } from "chart.js";
 import {
   FaHeartbeat,
   FaChartBar,
   FaUsers,
   FaMapMarkedAlt,
+  FaChartLine,
+  FaUserInjured,
 } from "react-icons/fa";
 
 // Registro de componentes
@@ -27,10 +30,12 @@ ChartJS.register(
   LineElement,
   Tooltip,
   Legend,
-  Title
+  Title,
+  BarElement
 );
 import { motion } from "framer-motion";
 import TablaRegiones from "./TablaRegiones";
+import dataCorto from "../data/corto.json";
 
 const MotionDiv = motion.div;
 
@@ -72,6 +77,38 @@ export const CardiovascularDashboard = () => {
         },
       ],
     },
+  };
+
+  const anos = dataCorto.map((item) => item.AÑO_DIAGNOSTICO);
+  const riesgosPromedio = dataCorto.map((item) => item.promedio_riesgo);
+  const pacientesTotales = dataCorto.map((item) => item.total_pacientes);
+
+  // Dataset para el gráfico de línea
+  const riskTrendData = {
+    labels: anos,
+    datasets: [
+      {
+        label: "Promedio de Riesgo",
+        data: riesgosPromedio,
+        borderColor: "#10B981",
+        backgroundColor: "rgba(16, 185, 129, 0.1)",
+        fill: true,
+        tension: 0.4,
+      },
+    ],
+  };
+
+  // Dataset para el gráfico de barras
+  const patientsTrendData = {
+    labels: anos,
+    datasets: [
+      {
+        label: "Total de Pacientes",
+        data: pacientesTotales,
+        backgroundColor: "#3AB7C1",
+        borderRadius: 10,
+      },
+    ],
   };
 
   useEffect(() => {
@@ -130,7 +167,7 @@ export const CardiovascularDashboard = () => {
       {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Age Distribution */}
-        <MotionDiv
+        {/* <MotionDiv
           className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -148,10 +185,51 @@ export const CardiovascularDashboard = () => {
               options={{ maintainAspectRatio: false }}
             />
           </div>
+        </MotionDiv> */}
+
+        <MotionDiv
+          className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold text-gray-700">
+              Risk Evolution
+            </h2>
+            <FaChartLine className="text-[#10B981]" />
+          </div>
+          <div className="h-[300px]">
+            <Line
+              data={riskTrendData}
+              options={{ maintainAspectRatio: false }}
+            />
+          </div>
+        </MotionDiv>
+
+        {/* Total Pacientes por Año */}
+        <MotionDiv
+          className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition duration-300"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9 }}
+        >
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-xl font-semibold text-gray-700">
+              Patients Diagnosed
+            </h2>
+            <FaUserInjured className="text-[#3AB7C1]" />
+          </div>
+          <div className="h-[300px]">
+            <Bar
+              data={patientsTrendData}
+              options={{ maintainAspectRatio: false }}
+            />
+          </div>
         </MotionDiv>
 
         {/* Risk Factors */}
-        <MotionDiv
+        {/* <MotionDiv
           className="bg-white rounded-3xl shadow-lg p-6 hover:shadow-2xl transition duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -169,10 +247,10 @@ export const CardiovascularDashboard = () => {
               options={{ maintainAspectRatio: false }}
             />
           </div>
-        </MotionDiv>
+        </MotionDiv> */}
 
         {/* Risk Trend */}
-        <MotionDiv
+        {/* <MotionDiv
           className="bg-white rounded-3xl shadow-lg p-6 lg:col-span-1 hover:shadow-2xl transition duration-300"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -191,7 +269,7 @@ export const CardiovascularDashboard = () => {
               }}
             />
           </div>
-        </MotionDiv>
+        </MotionDiv> */}
       </div>
 
       {/* Key Insights */}

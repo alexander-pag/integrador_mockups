@@ -1,0 +1,44 @@
+[
+  {
+    "AÑO_DIAGNOSTICO": 2019,
+    "promedio_riesgo": 0.953486469477659,
+    "total_pacientes": 3178,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2020,
+    "promedio_riesgo": 0.9508372530573849,
+    "total_pacientes": 3189,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2021,
+    "promedio_riesgo": 0.9377884914463454,
+    "total_pacientes": 3215,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2022,
+    "promedio_riesgo": 0.9403235843186062,
+    "total_pacientes": 3214,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2023,
+    "promedio_riesgo": 0.9505434782608697,
+    "total_pacientes": 3220,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2024,
+    "promedio_riesgo": 0.94575,
+    "total_pacientes": 3200,
+    "categoria": "Muy Alto"
+  },
+  {
+    "AÑO_DIAGNOSTICO": 2025,
+    "promedio_riesgo": 0.9375000000000001,
+    "total_pacientes": 784,
+    "categoria": "Muy Alto"
+  }
+]

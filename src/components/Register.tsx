@@ -14,6 +14,7 @@ import {
   FaRegIdCard,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link as RouterLink } from "react-router-dom";
 
 const MotionIcon = motion(FaHeartbeat);
 
@@ -132,7 +133,8 @@ export const RegistrationForm = () => {
             <Text textAlign="center" fontSize="sm" color="gray.600">
               Already have an account?{" "}
               <Link
-                href="#"
+                as={RouterLink}
+                to="/login"
                 color="emerald.500"
                 fontWeight="semibold"
                 _hover={{ color: "emerald.600" }}

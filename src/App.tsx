@@ -1,53 +1,43 @@
-import { useState } from "react";
-import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
-import { HamburgerIcon } from "@chakra-ui/icons";
-import { Sidebar } from "./components/Sidebar";
 import { CardiovascularDashboard } from "./components/Dashboard";
+import { Routes, Route } from "react-router-dom";
+import PatientFormLayout from "./components/PatientFormStepper";
+import {
+  DemographicData,
+  DemographicForm,
+} from "./components/DemographicsForm";
+import PersonalForm from "./components/PersonalForm";
+import SocialForm from "./components/SocialForm";
+import EconomicForm from "./components/EconomicForm";
+import MainLayout from "./Layouts/MainLayout";
+import { LoginForm } from "./components/Login";
+import { RegistrationForm } from "./components/Register";
+import { MunicipiosDashboard } from "./components/MunicipiosDashboard";
 
 export default function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  // Detecta si es mobile desde Chakra (más limpio que useEffect)
-  const isMobile = useBreakpointValue({ base: true, md: false });
-
-  const handleOpenSidebar = () => setIsSidebarOpen(true);
-  const handleCloseSidebar = () => setIsSidebarOpen(false);
+  const handleDemographicNext = (data: DemographicData) => {
+    console.log("🚀 Datos del paso 1 (demográficos):", data);
+    // aquí puedes guardar en Zustand o navegar al siguiente paso
+  };
 
   return (
-    <Box minH="100vh" bg="gray.50">
-      {/* Botón de hamburguesa solo en mobile */}
-      {isMobile && (
-        <IconButton
-          aria-label="Open menu"
-          icon={<HamburgerIcon />}
-          position="fixed"
-          top="1rem"
-          left="1rem"
-          zIndex={1200}
-          colorScheme="green"
-          onClick={handleOpenSidebar}
-        />
-      )}
+    <Routes>
+      <Route path="login" element={<LoginForm />} />
+      <Route path="register" element={<RegistrationForm />} />
 
-      <Sidebar
-        isOpen={!isMobile || isSidebarOpen}
-        onClose={handleCloseSidebar}
-        isMobile={!!isMobile}
-      />
-
-      {/* Contenido principal */}
-      <Box
-        ml={!isMobile ? "280px" : 0} // Deja espacio al sidebar en desktop
-        p={6}
-        transition="margin 0.3s ease"
-      >
-        <Box fontSize="2xl" fontWeight="bold" color="green.700">
-          Contenido Principal
-        </Box>
-        <Box mt={4}>
-          <CardiovascularDashboard />
-        </Box>
-      </Box>
-    </Box>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<CardiovascularDashboard />} />
+        <Route path="dashboard" element={<CardiovascularDashboard />} />
+        <Route path="dashboard-municipios" element={<MunicipiosDashboard />} />
+        <Route path="patient-form" element={<PatientFormLayout />}>
+          <Route
+            path="demographics"
+            element={<DemographicForm onNext={handleDemographicNext} />}
+          />
+          <Route path="personal" element={<PersonalForm />} />
+          <Route path="social" element={<SocialForm />} />
+          <Route path="economic" element={<EconomicForm />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 }

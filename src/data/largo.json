@@ -1,0 +1,396 @@
+{
+  "municipios": [
+    {
+      "municipio": "La Dorada",
+      "departamento": "Caldas",
+      "pacientes": 548,
+      "promedio_riesgo": 0.9428,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.00359237939119339],
+        ["SEXO", 0.002726901089772582],
+        ["ACCESO_ELECTRICO", 0.0011032035108655691],
+        ["ALCANTARILLADO", 0.0010207657469436526],
+        ["AREA_1", 0.0009650588617660105]
+      ]
+    },
+    {
+      "municipio": "Chinchina",
+      "departamento": "Caldas",
+      "pacientes": 733,
+      "promedio_riesgo": 0.9303,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0035962022375315428],
+        ["ACUEDUCTO", 0.0010486766695976257],
+        ["GAS_NATURAL", 0.0010173020418733358],
+        ["AREA_1", 0.0009857722325250506],
+        ["ES_PANDEMIA", 0.0009535389835946262]
+      ]
+    },
+    {
+      "municipio": "Manizales",
+      "departamento": "Caldas",
+      "pacientes": 1512,
+      "promedio_riesgo": 0.9391,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036446319427341223],
+        ["SEXO", 0.00270603084936738],
+        ["ACCESO_ELECTRICO", 0.0011261363979429007],
+        ["ACUEDUCTO", 0.0010633745696395636],
+        ["AREA_0", 0.0010018375469371676]
+      ]
+    },
+    {
+      "municipio": "Riosucio",
+      "departamento": "Caldas",
+      "pacientes": 501,
+      "promedio_riesgo": 0.9537,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036080265417695045],
+        ["GAS_NATURAL", 0.0010077187325805426],
+        ["AREA_1", 0.0009975937427952886],
+        ["INTERNET_0", 0.0009841503342613578],
+        ["ES_PANDEMIA", 0.000976568553596735]
+      ]
+    },
+    {
+      "municipio": "Salamina",
+      "departamento": "Caldas",
+      "pacientes": 367,
+      "promedio_riesgo": 0.9496,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["SEXO", 0.002614350523799658],
+        ["ALCANTARILLADO", 0.0010142414830625057],
+        ["AREA_0", 0.0009824814042076468],
+        ["INTERNET_1", 0.0009632706642150879],
+        ["AREA_1", 0.000939562451094389]
+      ]
+    },
+    {
+      "municipio": "Villamaria",
+      "departamento": "Caldas",
+      "pacientes": 476,
+      "promedio_riesgo": 0.9699,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0035207809414714575],
+        ["ACUEDUCTO", 0.001063125324435532],
+        ["GAS_NATURAL", 0.0010428937384858727],
+        ["AREA_0", 0.0009939700830727816],
+        ["INTERNET_0", 0.0009652135195210576]
+      ]
+    },
+    {
+      "municipio": "Palestina",
+      "departamento": "Caldas",
+      "pacientes": 513,
+      "promedio_riesgo": 0.9514,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036377538926899433],
+        ["ACUEDUCTO", 0.0009864476742222905],
+        ["AREA_0", 0.0009817822137847543],
+        ["INTERNET_0", 0.0009647699189372361],
+        ["AREA_1", 0.0009402724099345505]
+      ]
+    },
+    {
+      "municipio": "Anserma",
+      "departamento": "Caldas",
+      "pacientes": 350,
+      "promedio_riesgo": 0.9667,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["AREA_1", 0.0010682205902412534],
+        ["INTERNET_0", 0.0009978581219911575],
+        ["ES_PANDEMIA", 0.0009357291855849326],
+        ["INTERNET_1", 0.0008574972162023187],
+        ["AREA_0", 0.0008557761320844293]
+      ]
+    },
+    {
+      "municipio": "Medellin",
+      "departamento": "Antioquia",
+      "pacientes": 1951,
+      "promedio_riesgo": 0.9372,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0036278432235121727],
+        ["SEXO", 0.002707627136260271],
+        ["ACCESO_ELECTRICO", 0.0011199405416846275],
+        ["GAS_NATURAL", 0.0010502523509785533],
+        ["ALCANTARILLADO", 0.0010392061667516828]
+      ]
+    },
+    {
+      "municipio": "Sabaneta",
+      "departamento": "Antioquia",
+      "pacientes": 234,
+      "promedio_riesgo": 0.9509,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0034541932400316],
+        ["SEXO", 0.002497874666005373],
+        ["GAS_NATURAL", 0.0010381524916738272],
+        ["ACUEDUCTO", 0.0010219867108389735],
+        ["INTERNET_0", 0.000989694381132722]
+      ]
+    },
+    {
+      "municipio": "Bello",
+      "departamento": "Antioquia",
+      "pacientes": 756,
+      "promedio_riesgo": 0.9281,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0034074648283421993],
+        ["SEXO", 0.002647679764777422],
+        ["ACCESO_ELECTRICO", 0.0010842056944966316],
+        ["ALCANTARILLADO", 0.0010149833979085088],
+        ["AREA_1", 0.0009890932124108076]
+      ]
+    },
+    {
+      "municipio": "Envigado",
+      "departamento": "Antioquia",
+      "pacientes": 517,
+      "promedio_riesgo": 0.9391,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036096086259931326],
+        ["SEXO", 0.002570437965914607],
+        ["INTERNET_0", 0.001051229890435934],
+        ["AREA_1", 0.000996696180664003],
+        ["ALCANTARILLADO", 0.0009894616669043899]
+      ]
+    },
+    {
+      "municipio": "La Ceja",
+      "departamento": "Antioquia",
+      "pacientes": 215,
+      "promedio_riesgo": 0.9262,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.003319151932373643],
+        ["ACCESO_ELECTRICO", 0.0011057979427278042],
+        ["AREA_0", 0.0010825549252331257],
+        ["ACUEDUCTO", 0.0010527141857892275],
+        ["GAS_NATURAL", 0.0009923436446115375]
+      ]
+    },
+    {
+      "municipio": "Barbosa",
+      "departamento": "Antioquia",
+      "pacientes": 509,
+      "promedio_riesgo": 0.9552,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.003261794336140156],
+        ["ACCESO_ELECTRICO", 0.0010498303454369307],
+        ["AREA_0", 0.0010382226901128888],
+        ["INTERNET_0", 0.0010127132991328835],
+        ["GAS_NATURAL", 0.0009960305178537965]
+      ]
+    },
+    {
+      "municipio": "Itagui",
+      "departamento": "Antioquia",
+      "pacientes": 540,
+      "promedio_riesgo": 0.9456,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036320474464446306],
+        ["FUMADOR", 0.0034116641618311405],
+        ["SEXO", 0.002665185136720538],
+        ["AREA_1", 0.0010224046418443322],
+        ["INTERNET_1", 0.0009513133554719388]
+      ]
+    },
+    {
+      "municipio": "Rionegro",
+      "departamento": "Antioquia",
+      "pacientes": 278,
+      "promedio_riesgo": 0.9578,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036328276619315147],
+        ["ACCESO_ELECTRICO", 0.0011076920200139284],
+        ["GAS_NATURAL", 0.0010486087994650006],
+        ["ALCANTARILLADO", 0.0010247788159176707],
+        ["INTERNET_0", 0.0010211605112999678]
+      ]
+    },
+    {
+      "municipio": "La Tebaida",
+      "departamento": "Quindio",
+      "pacientes": 733,
+      "promedio_riesgo": 0.9435,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0035365966614335775],
+        ["SEXO", 0.002617917023599148],
+        ["ACCESO_ELECTRICO", 0.0011027806904166937],
+        ["AREA_0", 0.0010176567593589425],
+        ["INTERNET_1", 0.0009595609735697508]
+      ]
+    },
+    {
+      "municipio": "Circasia",
+      "departamento": "Quindio",
+      "pacientes": 1512,
+      "promedio_riesgo": 0.9586,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["AREA_1", 0.0009685938712209463],
+        ["AREA_0", 0.0009538906160742044],
+        ["INTERNET_0", 0.000947411812376231],
+        ["ES_PANDEMIA", 0.0009337745141237974],
+        ["INTERNET_1", 0.0009072305401787162]
+      ]
+    },
+    {
+      "municipio": "Filandia",
+      "departamento": "Quindio",
+      "pacientes": 490,
+      "promedio_riesgo": 0.9441,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036292816512286663],
+        ["ALCANTARILLADO", 0.0010312513913959265],
+        ["AREA_1", 0.0009962680051103234],
+        ["INTERNET_0", 0.000990997301414609],
+        ["AREA_0", 0.0009266366250813007]
+      ]
+    },
+    {
+      "municipio": "Armenia",
+      "departamento": "Quindio",
+      "pacientes": 1238,
+      "promedio_riesgo": 0.9411,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0036056151147931814],
+        ["ANTECEDENTES_FAMILIARES", 0.0035468360874801874],
+        ["ACUEDUCTO", 0.0010555380722507834],
+        ["ES_PANDEMIA", 0.000988813117146492],
+        ["AREA_1", 0.000963899539783597]
+      ]
+    },
+    {
+      "municipio": "Quimbaya",
+      "departamento": "Quindio",
+      "pacientes": 489,
+      "promedio_riesgo": 0.9633,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0034547660034149885],
+        ["GAS_NATURAL", 0.0010324480244889855],
+        ["AREA_1", 0.0009903822792693973],
+        ["ES_PANDEMIA", 0.0009433601517230272],
+        ["AREA_0", 0.0009324329439550638]
+      ]
+    },
+    {
+      "municipio": "Montenegro",
+      "departamento": "Quindio",
+      "pacientes": 538,
+      "promedio_riesgo": 0.9597,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.003563932841643691],
+        ["FUMADOR", 0.0034920217003673315],
+        ["AREA_0", 0.0009822590509429574],
+        ["AREA_1", 0.0009397880639880896],
+        ["OCUPACION_Pensionado", 0.000938211742322892]
+      ]
+    },
+    {
+      "municipio": "Santa Rosa de Cabal",
+      "departamento": "Risaralda",
+      "pacientes": 992,
+      "promedio_riesgo": 0.9471,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["SEXO", 0.002707060193642974],
+        ["ACUEDUCTO", 0.0010590014280751348],
+        ["GAS_NATURAL", 0.00105194840580225],
+        ["ALCANTARILLADO", 0.0010020065819844604],
+        ["AREA_1", 0.0009881219593808055]
+      ]
+    },
+    {
+      "municipio": "Dosquebradas",
+      "departamento": "Risaralda",
+      "pacientes": 1231,
+      "promedio_riesgo": 0.9443,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.0036145648919045925],
+        ["SEXO", 0.0027100539300590754],
+        ["ACUEDUCTO", 0.001037256675772369],
+        ["GAS_NATURAL", 0.001027893042191863],
+        ["AREA_0", 0.0009763624984771013]
+      ]
+    },
+    {
+      "municipio": "Pereira",
+      "departamento": "Risaralda",
+      "pacientes": 1773,
+      "promedio_riesgo": 0.9471,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.003545642364770174],
+        ["ACCESO_ELECTRICO", 0.001112331752665341],
+        ["ACUEDUCTO", 0.0010429230751469731],
+        ["AREA_1", 0.0010412520496174693],
+        ["GAS_NATURAL", 0.0010377401486039162]
+      ]
+    },
+    {
+      "municipio": "Belmonte",
+      "departamento": "Risaralda",
+      "pacientes": 224,
+      "promedio_riesgo": 0.9686,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ACCESO_ELECTRICO", 0.001051260274834931],
+        ["AREA_0", 0.001013508765026927],
+        ["INTERNET_1", 0.000945285486523062],
+        ["GAS_NATURAL", 0.0009336118819192052],
+        ["ALCANTARILLADO", 0.0009190551354549825]
+      ]
+    },
+    {
+      "municipio": "La Virginia",
+      "departamento": "Risaralda",
+      "pacientes": 524,
+      "promedio_riesgo": 0.9391,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["ANTECEDENTES_FAMILIARES", 0.003533456241711974],
+        ["FUMADOR", 0.003529733745381236],
+        ["SEXO", 0.002620286075398326],
+        ["GAS_NATURAL", 0.0010360507294535637],
+        ["AREA_1", 0.0010129569564014673]
+      ]
+    },
+    {
+      "municipio": "Apia",
+      "departamento": "Risaralda",
+      "pacientes": 256,
+      "promedio_riesgo": 0.947,
+      "categoria": "Muy Alto",
+      "top_factores": [
+        ["FUMADOR", 0.0034417943097651005],
+        ["SEXO", 0.002692468697205186],
+        ["ACUEDUCTO", 0.0010425889631733298],
+        ["AREA_1", 0.0009837280958890915],
+        ["ES_PANDEMIA", 0.0009828901384025812]
+      ]
+    }
+  ]
+}
