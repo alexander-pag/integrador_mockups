@@ -40,7 +40,9 @@ import dataCorto from "../data/corto.json";
 const MotionDiv = motion.div;
 
 export const CardiovascularDashboard = () => {
-  const [riskLevel, setRiskLevel] = useState("moderate");
+  const [riskLevel, setRiskLevel] = useState<"low" | "moderate" | "high">(
+    "moderate"
+  );
   const [loading, setLoading] = useState(true);
 
   const demoData = {
@@ -116,7 +118,7 @@ export const CardiovascularDashboard = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const getRiskColor = (risk) => {
+  const getRiskColor = (risk: "low" | "moderate" | "high") => {
     const colors = {
       low: "bg-green-500",
       moderate: "bg-yellow-500",

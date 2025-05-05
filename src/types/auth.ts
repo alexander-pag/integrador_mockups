@@ -4,6 +4,7 @@ export type LoginData = {
 };
 
 export type RegisterData = {
+  name: string;
   identificationNumber: string;
   password: string;
   email: string;

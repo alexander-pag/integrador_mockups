@@ -4,14 +4,15 @@ import PatientFormLayout from "./components/PatientFormStepper";
 import {
   DemographicData,
   DemographicForm,
-} from "./components/DemographicsForm";
-import PersonalForm from "./components/PersonalForm";
-import SocialForm from "./components/SocialForm";
-import EconomicForm from "./components/EconomicForm";
+} from "./components/user/DemographicsForm";
+import PersonalForm from "./components/user/PersonalForm";
+import SocialForm from "./components/user/SocialForm";
+import EconomicForm from "./components/user/EconomicForm";
 import MainLayout from "./Layouts/MainLayout";
-import { LoginForm } from "./components/Login";
-import { RegistrationForm } from "./components/Register";
+import { LoginForm } from "./pages/Login";
+import { RegistrationForm } from "./pages/Register";
 import { MunicipiosDashboard } from "./components/MunicipiosDashboard";
+import Profile from "./components/Profile";
 
 export default function App() {
   const handleDemographicNext = (data: DemographicData) => {
@@ -28,6 +29,7 @@ export default function App() {
         <Route index element={<CardiovascularDashboard />} />
         <Route path="dashboard" element={<CardiovascularDashboard />} />
         <Route path="dashboard-municipios" element={<MunicipiosDashboard />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="patient-form" element={<PatientFormLayout />}>
           <Route
             path="demographics"
