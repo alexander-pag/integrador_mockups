@@ -1,5 +1,5 @@
 import api from "../api/config";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../states/auth";
 
 export const useAuth = () => {
   const { isAuthenticated, login, logout } = useAuthStore();

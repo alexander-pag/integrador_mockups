@@ -28,10 +28,9 @@
       "@lib/*": ["lib/*"],
       "@pages/*": ["pages/*"],
       "@styles/*": ["styles/*"],
-      "@types/*": ["types/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@utils/*": ["utils/*"],
-      "@api/*": ["api/*"],
-      "@store/*": ["store/*"]
+      "@api/*": ["api/*"]
     }
   },
   "include": ["src"]

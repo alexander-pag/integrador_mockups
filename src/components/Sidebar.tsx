@@ -23,6 +23,7 @@ import {
 } from "@chakra-ui/icons";
 
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 // Motion Wrapper para ListItem
 const MotionListItem = motion(ListItem);
@@ -43,12 +44,24 @@ export const Sidebar = ({
   };
 
   const menuItems = [
-    { name: "Chat", icon: ChatIcon },
-    { name: "Notifications", icon: BellIcon },
-    { name: "Settings", icon: SettingsIcon },
-    { name: "Help", icon: QuestionIcon },
-    { name: "About", icon: InfoIcon },
+    { name: "Dashboard", icon: ChatIcon, path: "/dashboard" },
+    { name: "Pacientes", icon: ChatIcon, path: "/patient-form/demographics" },
+    { name: "Municipios", icon: BellIcon, path: "/dashboard-municipios" },
+    { name: "Login", icon: SettingsIcon, path: "/login" },
+    { name: "Personal de salud", icon: QuestionIcon, path: "/register" },
+    { name: "Perfil", icon: InfoIcon, path: "/profile" },
   ];
+
+  // Usamos useNavigate para navegar a otras rutas
+  const navigate = useNavigate();
+
+  // Función para manejar la navegación
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    if (isMobile) {
+      onClose(); // Cierra el sidebar en versión móvil al hacer clic
+    }
+  };
 
   const SidebarContent = () => (
     <VStack spacing={6} align="stretch" w="full" h="100%">
@@ -76,6 +89,7 @@ export const Sidebar = ({
         {menuItems.map((item, index) => (
           <MotionListItem
             key={index}
+            onClick={() => handleNavigation(item.path)}
             cursor="pointer"
             p={3}
             borderRadius="md"

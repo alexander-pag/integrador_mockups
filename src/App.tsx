@@ -1,29 +1,23 @@
 import { CardiovascularDashboard } from "./components/Dashboard";
 import { Routes, Route } from "react-router-dom";
 import PatientFormLayout from "./components/PatientFormStepper";
-import {
-  DemographicData,
-  DemographicForm,
-} from "./components/user/DemographicsForm";
-import PersonalForm from "./components/user/PersonalForm";
-import SocialForm from "./components/user/SocialForm";
-import EconomicForm from "./components/user/EconomicForm";
+import { DemographicForm } from "./components/patient/DemographicsForm";
+import { ClinicalForm } from "./components/patient/ClinicalForm";
+import { LivingConditionsForm } from "./components/patient/LivingConditionsForm";
+import { PersonalForm } from "./components/patient/PersonalForm";
+import { SocialForm } from "./components/patient/SocialForm";
+import { EconomicForm } from "./components/patient/EconomicForm";
 import MainLayout from "./Layouts/MainLayout";
 import { LoginForm } from "./pages/Login";
-import { RegistrationForm } from "./pages/Register";
+import { RegistrationMedicalForm } from "./pages/RegistrationMedicalForm";
 import { MunicipiosDashboard } from "./components/MunicipiosDashboard";
 import Profile from "./components/Profile";
 
 export default function App() {
-  const handleDemographicNext = (data: DemographicData) => {
-    console.log("🚀 Datos del paso 1 (demográficos):", data);
-    // aquí puedes guardar en Zustand o navegar al siguiente paso
-  };
-
   return (
     <Routes>
       <Route path="login" element={<LoginForm />} />
-      <Route path="register" element={<RegistrationForm />} />
+      <Route path="register" element={<RegistrationMedicalForm />} />
 
       <Route path="/" element={<MainLayout />}>
         <Route index element={<CardiovascularDashboard />} />
@@ -31,13 +25,12 @@ export default function App() {
         <Route path="dashboard-municipios" element={<MunicipiosDashboard />} />
         <Route path="profile" element={<Profile />} />
         <Route path="patient-form" element={<PatientFormLayout />}>
-          <Route
-            path="demographics"
-            element={<DemographicForm onNext={handleDemographicNext} />}
-          />
+          <Route path="demographics" element={<DemographicForm />} />
           <Route path="personal" element={<PersonalForm />} />
           <Route path="social" element={<SocialForm />} />
           <Route path="economic" element={<EconomicForm />} />
+          <Route path="clinical" element={<ClinicalForm />} />
+          <Route path="living-conditions" element={<LivingConditionsForm />} />
         </Route>
       </Route>
     </Routes>

@@ -13,8 +13,9 @@ import { FaUser, FaHeartbeat, FaHome, FaWallet } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
+import { usePatientFormStore } from "../states/patientFormStore";
 
 const MotionBox = motion(Box);
 
@@ -23,6 +24,8 @@ const steps = [
   { label: "Personales", icon: FaHeartbeat },
   { label: "Sociales", icon: FaHome },
   { label: "Económicos", icon: FaWallet },
+  { label: "Clínicos", icon: FaHeartbeat },
+  { label: "Condiciones de vida", icon: FaHome },
 ];
 
 const stepRoutes = [
@@ -30,6 +33,8 @@ const stepRoutes = [
   "/patient-form/personal",
   "/patient-form/social",
   "/patient-form/economic",
+  "/patient-form/clinical",
+  "/patient-form/living-conditions",
 ];
 
 export default function PatientFormStepper() {
@@ -50,12 +55,27 @@ export default function PatientFormStepper() {
     }
   }, [currentPath]);
 
-  const handleNext = () => {
+  const { data, resetForm } = usePatientFormStore();
+
+  const formRef = useRef<{ submit: () => void }>(null);
+
+  const handleNext = async () => {
     if (activeStep < steps.length - 1) {
       setActiveStep(activeStep + 1);
-      navigate(stepRoutes[activeStep + 1]); // 👈 Navega al siguiente formulario
+      formRef.current?.submit();
+      navigate(stepRoutes[activeStep + 1]);
     } else {
-      navigate("/resumen"); // Final
+      try {
+        console.log("📦 Enviando datos consolidados:", data);
+        // await fetch("/api/pacientes", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(data),
+        // });
+        resetForm();
+      } catch (error) {
+        console.error("❌ Error al enviar los datos:", error);
+      }
     }
   };
 
@@ -134,7 +154,6 @@ export default function PatientFormStepper() {
         {/* Aquí se renderizará el contenido del formulario según el paso */}
       </Box>
 
-      {/* Navegación */}
       <Flex mt={6} justify="space-between">
         <Button
           onClick={handleBack}

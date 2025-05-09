@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LoginData } from "../types/auth";
+import { LoginData } from "../interfaces/auth";
 
 export const authLogin = async (loginData: LoginData) => {
   const response = await axios.post("/login", loginData);

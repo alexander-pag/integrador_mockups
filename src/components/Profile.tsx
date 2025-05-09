@@ -10,7 +10,7 @@ import {
   Stack,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { EditIcon, DownloadIcon, InfoOutlineIcon } from "@chakra-ui/icons";
+import { EditIcon, DownloadIcon } from "@chakra-ui/icons";
 import { FaMapMarkerAlt, FaNotesMedical } from "react-icons/fa";
 import { motion } from "framer-motion";
 

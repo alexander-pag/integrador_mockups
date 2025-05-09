@@ -18,20 +18,20 @@ import {
 import { motion } from "framer-motion";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../states/auth";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { authRegister } from "../api/authService";
-import { RegisterData } from "../types/auth";
+import { RegisterMedicalData } from "../interfaces/auth";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const MotionIcon = motion(FaHeartbeat);
 
-type RegisterFormInputs = RegisterData & {
+type RegisterFormInputs = RegisterMedicalData & {
   confirmPassword: string;
 };
 
-export const RegistrationForm = () => {
+export const RegistrationMedicalForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [registerError, setRegisterError] = useState("");
@@ -90,7 +90,7 @@ export const RegistrationForm = () => {
             fontWeight="bold"
           >
             <FaHeartbeat className="text-emerald-600 mr-3 text-3xl" />
-            Crear una cuenta
+            Crear Personal de Salud
           </Heading>
 
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -100,22 +100,39 @@ export const RegistrationForm = () => {
                 <Input
                   variant="unstyled"
                   placeholder="Nombre Completo"
-                  required
                   _placeholder={{ color: "gray.400" }}
                   className="flex-1"
+                  {...register("name", {
+                    required: "El nombre completo es requerido.",
+                    minLength: {
+                      value: 3,
+                      message: "Debe tener al menos 3 caracteres.",
+                    },
+                    maxLength: {
+                      value: 50,
+                      message: "No puede exceder los 50 caracteres.",
+                    },
+                    pattern: {
+                      value: /^[a-zA-Z\s]+$/,
+                      message: "Solo se permiten letras y espacios.",
+                    },
+                  })}
                 />
               </div>
+              {errors.name && (
+                <Text className="text-red-600 text-xs mt-1">
+                  {errors.name.message}
+                </Text>
+              )}
             </div>
 
             <div>
               <div className="flex items-center border rounded-xl p-3 focus-within:ring-2 focus-within:ring-emerald-400 transition">
                 <FaRegIdCard className="text-gray-400 mr-3" />
                 <Input
+                  type="text"
                   variant="unstyled"
                   placeholder="Número de Identificación"
-                  required
-                  _placeholder={{ color: "gray.400" }}
-                  className="flex-1"
                   {...register("identificationNumber", {
                     required: "El número de identificación es requerido.",
                     minLength: {
@@ -134,6 +151,38 @@ export const RegistrationForm = () => {
                 />
               </div>
               {errors.identificationNumber && (
+                <Text
+                  className="text-red-600 text-xs mt-1"
+                  data-testid="error-identification"
+                >
+                  {errors.identificationNumber.message}
+                </Text>
+              )}
+            </div>
+
+            <div>
+              <div className="flex items-center border rounded-xl p-3 focus-within:ring-2 focus-within:ring-emerald-400 transition">
+                <FaRegIdCard className="text-gray-400 mr-3" />
+                <Input
+                  variant="unstyled"
+                  placeholder="Tarjeta Profesional"
+                  _placeholder={{ color: "gray.400" }}
+                  className="flex-1"
+                  {...register("profesionalLicense", {
+                    required:
+                      "El número de la tarjeta profesional es requerido.",
+                    minLength: {
+                      value: 8,
+                      message: "Debe tener al menos 8 caracteres.",
+                    },
+                    maxLength: {
+                      value: 12,
+                      message: "No puede exceder los 12 caracteres.",
+                    },
+                  })}
+                />
+              </div>
+              {errors.identificationNumber && (
                 <Text className="text-red-600 text-xs mt-1">
                   {errors.identificationNumber.message}
                 </Text>
@@ -144,14 +193,28 @@ export const RegistrationForm = () => {
               <div className="flex items-center border rounded-xl p-3 focus-within:ring-2 focus-within:ring-emerald-400 transition">
                 <FaEnvelope className="text-gray-400 mr-3" />
                 <Input
-                  type="email"
+                  type="text"
                   variant="unstyled"
                   placeholder="Correo Electrónico"
-                  required
                   _placeholder={{ color: "gray.400" }}
                   className="flex-1"
+                  {...register("email", {
+                    required: "El correo electrónico es requerido.",
+                    pattern: {
+                      value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+                      message: "Formato de correo inválido.",
+                    },
+                  })}
                 />
               </div>
+              {errors.email && (
+                <Text
+                  className="text-red-600 text-xs mt-1"
+                  data-testid="error-email"
+                >
+                  {errors.email.message}
+                </Text>
+              )}
             </div>
 
             <div>
@@ -197,7 +260,7 @@ export const RegistrationForm = () => {
               )}
             </div>
 
-            <div>
+            {/* <div>
               <InputGroup className="w-full">
                 <div className="flex items-center border rounded-xl p-3 w-full focus-within:ring-2 focus-within:ring-emerald-400 transition">
                   <FaLock className="text-gray-400 mr-3" />
@@ -238,7 +301,7 @@ export const RegistrationForm = () => {
                   {errors.password.message}
                 </Text>
               )}
-            </div>
+            </div> */}
 
             {/* Mensaje de error de register */}
             {registerError && (

@@ -14,8 +14,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { authLogin } from "../api/authService";
-import { useAuthStore } from "../store/auth";
-import { LoginData } from "../types/auth";
+import { useAuthStore } from "../states/auth";
+import { LoginData } from "../interfaces/auth";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -82,11 +82,8 @@ export const LoginForm = () => {
               <div className="flex items-center border rounded-xl p-3 focus-within:ring-2 focus-within:ring-emerald-400 transition">
                 <FaIdCard className="text-gray-400 mr-3" />
                 <Input
-                  type="number"
-                  variant="unstyled"
+                  type="text"
                   placeholder="Número de Identificación"
-                  _placeholder={{ color: "gray.400" }}
-                  className="flex-1"
                   {...register("identificationNumber", {
                     required: "El número de identificación es requerido.",
                     minLength: {
@@ -105,7 +102,10 @@ export const LoginForm = () => {
                 />
               </div>
               {errors.identificationNumber && (
-                <Text className="text-red-600 text-xs mt-1">
+                <Text
+                  className="text-red-600 text-xs mt-1"
+                  data-testid="error-identification"
+                >
                   {errors.identificationNumber.message}
                 </Text>
               )}

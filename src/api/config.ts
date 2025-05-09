@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useAuthStore } from "../store/auth";
+import { useAuthStore } from "../states/auth";
 
 const API_BASE_URL = "http://localhost:3000";
 

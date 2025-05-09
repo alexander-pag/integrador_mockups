@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { LoginForm } from "../pages/Login";
 import { BrowserRouter } from "react-router-dom";
@@ -35,63 +35,85 @@ describe("LoginForm", () => {
     vi.clearAllMocks();
   });
 
-  it("debería renderizar el formulario con campos de identificación y contraseña", () => {
+  // Prueba #1
+  it("muestra error si el campo de identificación está vacío", async () => {
     renderComponent();
+    fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
     expect(
-      screen.getByPlaceholderText(/número de identificación/i)
+      await screen.findByText(/identificación.*requerido/i)
     ).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/contraseña/i)).toBeInTheDocument();
   });
 
-  it("debería mostrar errores si se intenta enviar el formulario vacío", async () => {
+  // Prueba #2
+  it("muestra error si el campo de contraseña está vacío", async () => {
     renderComponent();
     fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText(/el número de identificación es requerido/i)
-      ).toBeInTheDocument();
-      expect(
-        screen.getByText(/la contraseña es requerida/i)
-      ).toBeInTheDocument();
-    });
+    expect(
+      await screen.findByText(/la contraseña es requerida/i)
+    ).toBeInTheDocument();
   });
 
-  it("debería mostrar error si la contraseña es demasiado corta", async () => {
+  // Prueba #3
+  it("muestra error si se ingresan letras en el campo de identificación", async () => {
     renderComponent();
-
     fireEvent.input(screen.getByPlaceholderText(/número de identificación/i), {
-      target: { value: "12345678" },
+      target: { value: "abc12345" },
     });
-
-    fireEvent.input(screen.getByPlaceholderText(/contraseña/i), {
-      target: { value: "123" },
-    });
-
     fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText(/debe tener al menos 8 caracteres/i)
-      ).toBeInTheDocument();
-    });
+    expect(await screen.findByTestId("error-identification")).toHaveTextContent(
+      "Solo se permiten números."
+    );
   });
 
-  it("debería no mostrar errores si los datos están correctos", async () => {
+  // Prueba #4
+  it("muestra error si la identificación tiene menos de 8 caracteres", async () => {
+    renderComponent();
+    fireEvent.input(screen.getByPlaceholderText(/número de identificación/i), {
+      target: { value: "12345" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
+    expect(
+      await screen.findByText(/al menos 8 caracteres/i)
+    ).toBeInTheDocument();
+  });
+
+  // Prueba #5
+  it("muestra error si la identificación tiene más de 12 caracteres", async () => {
+    renderComponent();
+    fireEvent.input(screen.getByPlaceholderText(/número de identificación/i), {
+      target: { value: "123456789012345" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
+    expect(
+      await screen.findByText(/no puede exceder los 12 caracteres/i)
+    ).toBeInTheDocument();
+  });
+
+  // Prueba #6
+  it("muestra error si la contraseña no tiene mayúscula", async () => {
+    renderComponent();
+    fireEvent.input(screen.getByPlaceholderText(/contraseña/i), {
+      target: { value: "prueba123!" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
+    expect(await screen.findByText(/una mayúscula/i)).toBeInTheDocument();
+  });
+
+  // Prueba #7
+  it("la contraseña debe estar oculta por defecto", () => {
+    renderComponent();
+    const passwordInput = screen.getByPlaceholderText(/contraseña/i);
+    expect(passwordInput).toHaveAttribute("type", "password");
+  });
+
+  // Prueba #8
+  it("muestra la contraseña al hacer clic en el botón de visibilidad", async () => {
     renderComponent();
 
-    fireEvent.input(screen.getByPlaceholderText(/número de identificación/i), {
-      target: { value: "12345678" },
-    });
+    const toggleBtn = screen.getByLabelText(/toggle password/i);
+    fireEvent.click(toggleBtn);
 
-    fireEvent.input(screen.getByPlaceholderText(/contraseña/i), {
-      target: { value: "Prueba123!" },
-    });
-
-    fireEvent.click(screen.getByRole("button", { name: /iniciar sesión/i }));
-
-    await waitFor(() => {
-      expect(screen.queryByText(/es requerido/i)).toBeNull();
-    });
+    const passwordInput = screen.getByPlaceholderText(/contraseña/i);
+    expect(passwordInput).toHaveAttribute("type", "text");
   });
 });
