@@ -3,26 +3,31 @@ import { create } from "zustand";
 interface AuthState {
   accessToken: string | null;
   isAuthenticated: boolean;
-  login: (tokens: { accessToken: string }) => void;
+  user: { name: string; role: string } | null;
+  login: (data: {
+    accessToken: string;
+    user: { name: string; role: string };
+  }) => void;
   logout: () => void;
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
   accessToken: localStorage.getItem("accessToken"),
   isAuthenticated: !!localStorage.getItem("accessToken"),
+  user: JSON.parse(localStorage.getItem("user") || "null"),
 
-  login: ({ accessToken }) => {
-    console.log("Login successful, setting access token:", accessToken);
-
+  login: ({ accessToken, user }) => {
     localStorage.setItem("accessToken", accessToken);
+    localStorage.setItem("user", JSON.stringify(user));
 
-    set({ accessToken, isAuthenticated: true });
+    set({ accessToken, isAuthenticated: true, user });
   },
 
-  logout: async () => {
+  logout: () => {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("user");
 
-    set({ accessToken: null, isAuthenticated: false });
+    set({ accessToken: null, isAuthenticated: false, user: null });
 
     window.location.href = "/login";
   },

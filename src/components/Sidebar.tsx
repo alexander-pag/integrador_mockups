@@ -24,6 +24,8 @@ import {
 
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useAuthStore } from "../states/auth";
+import { getRoleDisplayName } from "../utils/roleMapper";
 
 // Motion Wrapper para ListItem
 const MotionListItem = motion(ListItem);
@@ -37,7 +39,7 @@ export const Sidebar = ({
   onClose: () => void;
   isMobile: boolean;
 }) => {
-  const user = {
+  const userMock = {
     name: "John Doe",
     role: "Doctor",
     avatar: "https://bit.ly/broken-link", // Tu avatar real aquí
@@ -51,6 +53,8 @@ export const Sidebar = ({
     { name: "Personal de salud", icon: QuestionIcon, path: "/register" },
     { name: "Perfil", icon: InfoIcon, path: "/profile" },
   ];
+
+  const { user } = useAuthStore();
 
   // Usamos useNavigate para navegar a otras rutas
   const navigate = useNavigate();
@@ -73,11 +77,13 @@ export const Sidebar = ({
 
       <Box px={4}>
         <HStack spacing={3}>
-          <Avatar size="md" name={user.name} src={user.avatar} />
+          <Avatar size="md" name={userMock.name} src={userMock.avatar} />
           <Box>
-            <Text fontWeight="medium">{user.name}</Text>
+            <Text fontWeight="medium" className="uppercase">
+              {user?.name}
+            </Text>
             <Text fontSize="sm" color="gray.500">
-              {user.role}
+              {getRoleDisplayName(user?.role || "")}
             </Text>
           </Box>
         </HStack>

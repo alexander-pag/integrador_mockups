@@ -32,10 +32,18 @@ export const LoginForm = () => {
     mutationFn: authLogin,
     onSuccess: (response) => {
       if (response?.data) {
-        const { token } = response.data;
-        console.log("Token de acceso:", token);
+        console.log("Login response", response);
+        const { token, user } = response.data;
+        const username = user.username;
+        const role = user.authorities[0].authority;
 
-        login({ accessToken: token });
+        login({
+          accessToken: token,
+          user: {
+            name: username,
+            role,
+          },
+        });
 
         toast.success("¡Inicio de sesión exitoso! Bienvenido 👋");
 
