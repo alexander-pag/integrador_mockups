@@ -12,6 +12,8 @@ export const useAuthStore = create<AuthState>((set) => ({
   isAuthenticated: !!localStorage.getItem("accessToken"),
 
   login: ({ accessToken }) => {
+    console.log("Login successful, setting access token:", accessToken);
+
     localStorage.setItem("accessToken", accessToken);
 
     set({ accessToken, isAuthenticated: true });
@@ -19,7 +21,6 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   logout: async () => {
     localStorage.removeItem("accessToken");
-    localStorage.removeItem("barberShopId");
 
     set({ accessToken: null, isAuthenticated: false });
 

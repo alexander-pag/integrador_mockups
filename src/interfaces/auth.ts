@@ -1,5 +1,5 @@
 export type LoginData = {
-  identificationNumber: string;
+  username: string;
   password: string;
 };
 

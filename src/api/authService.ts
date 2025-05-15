@@ -1,12 +1,10 @@
-import axios from "axios";
+import api from "./config";
 import { LoginData } from "../interfaces/auth";
 
 export const authLogin = async (loginData: LoginData) => {
-  const response = await axios.post("/login", loginData);
-  return response.data;
+  return await api.post("/auth/login", loginData);
 };
 
 export const authRegister = async (registerData: any) => {
-  const response = await axios.post("/register", registerData);
-  return response.data;
+  return await api.post("/register", registerData);
 };

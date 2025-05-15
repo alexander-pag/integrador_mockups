@@ -31,8 +31,9 @@ export const LoginForm = () => {
     mutationFn: authLogin,
     onSuccess: (response) => {
       if (response?.data) {
+        console.log("Login response", response);
         const { token } = response.data;
-        login(token);
+        login({ accessToken: token });
         navigate(`/dashboard`);
       }
     },
@@ -84,29 +85,29 @@ export const LoginForm = () => {
                 <Input
                   type="text"
                   placeholder="Número de Identificación"
-                  {...register("identificationNumber", {
+                  {...register("username", {
                     required: "El número de identificación es requerido.",
-                    minLength: {
-                      value: 8,
-                      message: "Debe tener al menos 8 caracteres.",
-                    },
-                    maxLength: {
-                      value: 12,
-                      message: "No puede exceder los 12 caracteres.",
-                    },
-                    pattern: {
-                      value: /^[0-9]+$/,
-                      message: "Solo se permiten números.",
-                    },
+                    // minLength: {
+                    //   value: 8,
+                    //   message: "Debe tener al menos 8 caracteres.",
+                    // },
+                    // maxLength: {
+                    //   value: 12,
+                    //   message: "No puede exceder los 12 caracteres.",
+                    // },
+                    // pattern: {
+                    //   value: /^[0-9]+$/,
+                    //   message: "Solo se permiten números.",
+                    // },
                   })}
                 />
               </div>
-              {errors.identificationNumber && (
+              {errors.username && (
                 <Text
                   className="text-red-600 text-xs mt-1"
                   data-testid="error-identification"
                 >
-                  {errors.identificationNumber.message}
+                  {errors.username.message}
                 </Text>
               )}
             </div>
@@ -124,16 +125,16 @@ export const LoginForm = () => {
                     className="flex-1"
                     {...register("password", {
                       required: "La contraseña es requerida.",
-                      minLength: {
-                        value: 8,
-                        message: "Debe tener al menos 8 caracteres.",
-                      },
-                      pattern: {
-                        value:
-                          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-                        message:
-                          "Debe contener una mayúscula, una minúscula, un número y un carácter especial.",
-                      },
+                      // minLength: {
+                      //   value: 8,
+                      //   message: "Debe tener al menos 8 caracteres.",
+                      // },
+                      // pattern: {
+                      //   value:
+                      //     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+                      //   message:
+                      //     "Debe contener una mayúscula, una minúscula, un número y un carácter especial.",
+                      // },
                     })}
                   />
                   <InputRightElement className="h-full">
