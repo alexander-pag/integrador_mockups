@@ -18,6 +18,7 @@ import { useAuthStore } from "../states/auth";
 import { LoginData } from "../interfaces/auth";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { toast } from "sonner";
 
 type LoginFormInputs = LoginData;
 
@@ -31,15 +32,21 @@ export const LoginForm = () => {
     mutationFn: authLogin,
     onSuccess: (response) => {
       if (response?.data) {
-        console.log("Login response", response);
         const { token } = response.data;
+        console.log("Token de acceso:", token);
+
         login({ accessToken: token });
+
+        toast.success("¡Inicio de sesión exitoso! Bienvenido 👋");
+
         navigate(`/dashboard`);
       }
     },
     onError: (error: any) => {
       console.error("Error en el login", error);
       setLoginError("Identificación o contraseña incorrecta.");
+
+      toast.error("Error en el login 😓 Verifica tus datos");
     },
   });
 
